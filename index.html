@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color:white;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .login-container {
+        background-color:darkblue;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        margin-left: 500px;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: antiquewhite;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    .keypad-container {
+        display: grid;
+        grid-template-columns: repeat(3, 60px);
+        gap: 10px;
+        justify-content: center;
+    }
+    .key {
+        background-color:darkcyan;
+        border: none;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        background-color: rgba(255, 255, 255, 0.1); /* Transparent white */
+       
+    }
+    .key:hover {
+        background-color:darkcyan;
+    }
+    .login-input {
+        text-align: center;
+        font-size: 24px;
+        width: 200px;
+        margin: 10px auto;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        
+    }
+    #logo {
+    max-width: 300px;
+    max-height: 300px;
+    margin: 10px; /* Adjust margin as needed */
+    position: absolute; /* Position absolutely */
+    top: 20px;
+    left: 10px; /* Distance from left */
+    border-radius: 8px;
+    transform: scale(1.5); /* Zoom in effect */
+    margin-top: 180px;
+    margin-left: 150px;
+}
+footer {
+            background-color:grey;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        h1 {
+        color:black;
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+    }
+  
+</style>
+</head>
+<body>
+
+    <header>
+        <img id="logo" src="emoticuplogo.png" alt="Company Logo">
+    </header>
+  
+<div class="login-container">
+    <h2>Admin Login</h2>
+    <input type="password" class="login-input" id="pinInput"  placeholder="POS PIN">
+    <div class="keypad-container">
+        <button class="key" onclick="addToPin(1)">1</button>
+        <button class="key" onclick="addToPin(2)">2</button>
+        <button class="key" onclick="addToPin(3)">3</button>
+        <button class="key" onclick="addToPin(4)">4</button>
+        <button class="key" onclick="addToPin(5)">5</button>
+        <button class="key" onclick="addToPin(6)">6</button>
+        <button class="key" onclick="addToPin(7)">7</button>
+        <button class="key" onclick="addToPin(8)">8</button>
+        <button class="key" onclick="addToPin(9)">9</button>
+        <button class="key" onclick="clearPin()">Clear</button>
+        <button class="key" onclick="backspacePin()">&#9003;</button>
+        <button class="key" onclick="submitPin()">OK</button>
+    </div>
+</div>
+<footer>
+    &copy; Copyright 2017 emoticup. | All rights reserved.
+</footer>
+<script>
+    let pin = '';
+
+function addToPin(number) {
+    if (pin.length < 4) {
+        pin += number;
+        document.getElementById('pinInput').value = '*'.repeat(pin.length);
+    }
+}
+
+function clearPin() {
+    pin = '';
+    document.getElementById('pinInput').value = '';
+}
+
+function backspacePin() {
+    pin = pin.slice(0, -1);
+    document.getElementById('pinInput').value = '*'.repeat(pin.length);
+}
+
+function submitPin() {
+    if (pin === '321') {
+        // Redirect to the next page
+        window.location.href = 'all-menu3.html';
+    } else {
+        // Incorrect PIN
+        alert('Incorrect PIN. Please try again.');
+        clearPin();
+    }
+}
+</script>
+
+</body>
+</html>

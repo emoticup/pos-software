@@ -1,0 +1,8 @@
+
+    <!-- Button to show cart items, total cost, and GST -->
+    <button class="btn show-total-button" onclick="showTotal()">Show Total</button>
+
+      <!-- Search field -->
+<div class="search-container">
+    <input type="text" id="searchInput" onkeyup="searchItems()" placeholder="Search for items...">
+</div>

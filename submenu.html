@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cafe POS</title>
+<style>
+ body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    font-size: larger;
+    background-color: white;
+    overflow-y: scroll; /* Add scrolling for vertical overflow */
+}
+  #container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+   
+  }
+ 
+  #menu {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: flex-start; /* Align items to the left */
+  margin-bottom: -5px;
+}
+
+.menu-item {
+  margin-bottom: 1px; /* Decrease the bottom margin */
+}
+
+.menu-item img {
+  width:100px;
+  height: 100px;
+  cursor: pointer;
+  border-radius: 50%; /* Make the images circular */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  margin-top: 26px;
+  margin-bottom: 5px;
+}
+
+.menu-item img:hover {
+  transform: scale(1.1);
+}
+
+/* Remove margin adjustments for menu items */
+.menu-item {
+  margin-right: 0; /* Remove right margin */
+  margin-left: 0; /* Remove left margin */
+}
+
+
+
+
+  #bill {
+    margin-top: 250px;
+  }
+
+  .subcategory {
+  display: none; /* Hide subcategory items by default */
+  position: fixed;
+  top: 60%;
+  left: 40%;
+ 
+  transform: translate(-50%, -50%);
+}
+
+
+  .subcategory.show {
+    display: flex; /* Show subcategories when clicked */
+   
+  }
+  #header {
+  position: absolute;
+  top: 2px; /* Adjust the top margin as needed */
+  left: 10px; /* Adjust the left margin as needed */
+}
+
+#header img {
+  width:100px; /* Adjust the width of the image */
+  height: auto; /* Maintain aspect ratio */
+}
+.subcategory .menu-item {
+  margin-bottom: -45px; /* Add more space between subcategory items */
+  margin-top: 2px;
+}
+
+.subcategory .menu-item img {
+  width: 100px; /* Increase the size of subcategory item images */
+  height: 100px;
+}
+
+.subcategory .menu-item img:hover {
+  transform: scale(1.2); /* Increase the scale on hover */
+}
+.image-container {
+    margin: 20px 0; /* Adjust the top and bottom margin */
+}
+
+.image-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Adjust the bottom margin */
+}
+
+        .image-row img {
+            width: 190px;
+            height: 190px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            
+        }
+
+        .image-row img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Labels for images */
+        .image-label {
+            text-align: center;
+            margin-top: 5px;
+        }
+
+/* Price for each image row */
+.image-price {
+            text-align: center;
+            font-weight: bold;
+        }
+
+/* CSS for allmenusubcategory */
+#allmenusubcategory .image-container {
+  margin: -40px 0 30px; /* Adjust the top margin */
+}
+
+
+#allmenusubcategory .image-row {
+  display: flex;
+  justify-content: center;
+  margin: 10px ; /* Decrease the top and bottom margin */
+}
+
+#allmenusubcategory .image-row div {
+  flex: 1; /* Equal width for each item */
+  margin: 0 10px; /* Adjust horizontal margin */
+  text-align: center; /* Center-align items */
+}
+
+#allmenusubcategory .image-row img {
+  width: 120px; /* Decrease the width of the images */
+  height: 120px; /* Decrease the height of the images */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+#allmenusubcategory .image-row img:hover {
+  transform: scale(1.1);
+}
+
+/* CSS for labels and prices */
+#allmenusubcategory .image-label,
+#allmenusubcategory .image-price {
+  margin-top: 5px;
+  margin-bottom: 10px; /* Adjust vertical margin */
+}
+
+
+  
+
+#bill h3 {
+  margin-bottom: 10px;
+  color: #333; /* Dark text color */
+}
+
+#bill p {
+  margin: 5px 0;
+}
+
+#bill button {
+  padding: 8px 15px;
+  background-color: #4CAF50; /* Green background color */
+  color: white; /* White text color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#bill button:hover {
+  background-color: #45a049; /* Darker green color on hover */
+}
+.image-containerr {
+            margin: 20px;
+        }
+
+        .image-roww {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-left: 100px; /* Adjust this value as needed */
+}
+
+        .image-roww img {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .image-roww img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Labels for images */
+        .imagee-label {
+            text-align: center;
+            margin-top: 5px;
+        }
+   
+        #coffeeSubcategory .image-row img {
+  width: 170px; /* Change width as desired */
+  height: 170px; /* Change height as desired */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+#header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 180px;
+  text-align: center; /* Center align the content */
+}
+
+#header img {
+  width: 200px; /* Adjust the width of the image */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.sidebar {
+    background-color: #f2f2f2;
+    padding: 20px;
+    width: 300px;
+    border-radius: 10px;
+    align-self: flex-end; /* Aligning cart to the right */
+    position: fixed; /* Fixed position to stay in place */
+    top: 20px; /* Adjust distance from the top */
+    right: 20px; /* Adjust distance from the right */
+    z-index: 999; /* Ensure it's above other content */
+}
+
+
+        /* Cart styles */
+        .cart {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 50px;
+            height: 20vh; /* Set the height to fill the viewport */
+            overflow-y: scroll; /* Add scrolling for vertical overflow */
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .cart-total {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .pay-section {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            padding: 40px 20px;
+            background-color:crimson;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #555;
+        }
+
+        /* Delete button style */
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #ff6659;
+        }
+
+        /* QR code styles */
+        .qr-code {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .qr-code img {
+            width: 100px; /* Adjust the width as needed */
+            
+        }
+       /* Move the print button styling to the top */
+/* Positioning the buttons */
+.print-button,
+.home-button {
+    position: fixed;
+    bottom: 20px;
+    width: calc(50% - 10px); /* Adjust this width as needed */
+    text-align: center;
+}
+
+.print-button {
+    right: 20px;
+}
+
+.home-button {
+    left: 20px;
+}
+/* Button styles */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Print button style */
+.print-button button {
+    background-color:crimson;
+    color: #fff;
+}
+
+/* Home button style */
+.home-button button {
+    background-color: crimson;
+    color: #fff;
+}
+
+/* Hover effect */
+.btn:hover {
+    opacity: 0.8;
+}
+/* Share Receipt button styles */
+.share-receipt-button {
+    margin-top: 20px; /* Adjust margin as needed */
+}
+
+.share-receipt-button button {
+    padding: 10px 20px;
+    background-color: #007bff; /* Blue color */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-left: 1150px;
+    position: fixed;
+    bottom: 20px;
+     /* Adjust this width as needed */
+    text-align: center;
+}
+
+.share-receipt-button button:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+}
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 5px 0; /* Adjust as needed */
+}
+
+.cart-item > div {
+    margin-right: 10px; /* Adjust spacing between columns */
+}
+#logo {
+    max-width: 150px;
+    max-height: 150px;
+    position: absolute;
+    top: 10%;
+    left: 40%;
+    transform: translate(-50%, -50%) scale(1.5); /* Center and zoom in */
+    border-radius: 8px;
+}
+
+
+/* Cart styles */
+.cart {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column; /* Display items vertically */
+    align-items: stretch; /* Ensure items stretch to fill the container */
+}
+
+/* Cart item styles */
+.cart-item {
+    display: flex;
+    justify-content: space-between; /* Evenly distribute items */
+    padding: 10px; /* Add padding for spacing */
+    border-bottom: 1px solid #ddd; /* Add border between items for separation */
+}
+
+/* Adjust styles for quantity buttons */
+.quantity-btn {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.quantity-btn:hover {
+    background-color: #0056b3;
+}
+.next-page-button .btn {
+  background-color: crimson; /* Blue color, you can change it to your desired color */
+  color: #fff; /* Text color */
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Adjust padding as needed */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  margin-top: 84px;
+}
+
+.next-page-button .btn:hover {
+  background-color: #0056b3; /* Darker shade of blue on hover */
+}
+
+
+</style>
+</head>
+<body>
+  
+    <header>
+        <img id="logo" src="emoticuplogo.png" alt="Company Logo">
+    </header>
+
+  <div id="container">
+    <div id="header">
+     
+    </div>
+    <div id="menu">
+      
+      <div class="menu-item" onclick="toggleSubcategory('coffeeSubcategory')">
+        <img src="coffe.jpeg" alt="Coffee">
+        <div>Coffee Menu</div>
+      </div>
+      
+      <div class="menu-item" onclick="toggleSubcategory('kadakTeaSubcategory')">
+        <img src="elaichi.jpeg" alt="Kadak Tea">
+        <div>Kadak Tea</div>
+      </div>
+      <div class="menu-item" onclick="toggleSubcategory('greenTeaSubcategory')">
+        <img src="green tea.jpeg" alt="Green Tea">
+        <div>Green Tea</div>
+      </div>
+      
+    </div>
+  </div>
+  
+      <!-- Sidebar for the cart -->
+    <div class="sidebar">
+      <h2>Cart</h2>
+      <div class="cart" id="cart">
+          <!-- Cart items will be added dynamically here -->
+      </div>
+      <div class="cart-total">
+          <p>GST (18%): <span id="gst">0 Rs.</span></p>
+          <p>Total Rs.: <span id="total">0 Rs.</span></p>
+      </div>
+      
+      <div class="pay-section">
+          <button class="btn" onclick="pay('cash')">Pay Cash</button>
+          <button class="btn" onclick="pay('qr')">Pay QR Scan</button>
+      </div>
+      
+  </div>
+   
+     
+    
+      
+   
+     
+<div class="subcategory show" id="coffeeSubcategory">
+  <div class="image-container">
+      <div class="image-row">
+        <div>
+            <img src="cappaccino.jpeg" alt="Mocktail" onclick="addToCart('Cappaccino', 1, 40)">
+            <div class="image-label">Cappaccino</div>
+            <div class="image-price">Rs.40</div>
+        </div>
+          <div>
+            <img src="hazelnut.jpeg" alt="Mocktail" onclick="addToCart('HazelNut', 1, 40)">
+            <div class="image-label">Cappaccino HazelNut</div>
+            <div class="image-price">Rs.40</div>
+        </div>
+        <div>
+            <img src="irish.jpeg" alt="Coffee" onclick="addToCart('Irish', 1, 40)">
+            <div class="image-label">Cappaccino Irish</div>
+            <div class="image-price">Rs.40</div>
+        </div>
+        <div>
+            <img src="caramel.jpeg" alt="Tea" onclick="addToCart('Caramel', 1, 50)">
+            <div class="image-label">Cappaccino Caramel</div>
+            <div class="image-price">Rs.50</div>
+        </div>
+      </div>
+      <div class="image-row">
+        <div>
+          <img src="latte.jpeg" alt="Coffee" onclick="addToCart('Latte', 1, 40)">
+          <div class="image-label">Latte</div>
+          <div class="image-price">Rs.40</div>
+      </div>
+          <div>
+              <img src="espresso.jpg" alt="Mocktail" onclick="addToCart('Espresso', 1, 40)">
+              <div class="image-label">espresso</div>
+              <div class="image-price">Rs.40</div>
+          </div>
+          <div>
+            <img src="americano.jpeg" alt="Mocktail" onclick="addToCart('Americano', 1, 40)">
+            <div class="image-label">Americano</div>
+            <div class="image-price">Rs.40</div>
+        </div>
+        <div>
+          <img src="filter coffee.jpeg" alt="Tea" onclick="addToCart('Filter Coffee', 1, 50)">
+          <div class="image-label">Filter Coffee</div>
+          <div class="image-price">Rs.50</div>
+      </div>
+          
+      </div>
+  </div>
+</div>
+
+<div class="subcategory" id="cappuccinoSubcategory">
+  <div class="image-container">
+      <div class="image-row">
+          <div>
+              <img src="hazelnut.jpeg" alt="Mocktail" onclick="addToCart('HazelNut', 1, 20)">
+              <div class="image-label">Cappaccino HazelNut</div>
+              <div class="image-price">Rs.90</div>
+          </div>
+          <div>
+              <img src="cappaccino.jpeg" alt="Mocktail" onclick="addToCart('Cappaccino', 1, 20)">
+              <div class="image-label">Cappaccino</div>
+              <div class="image-price">Rs.90</div>
+          </div>
+      </div>
+      <div class="image-row">
+          <div>
+              <img src="caramel.jpeg" alt="Tea" onclick="addToCart('Caramel', 1, 10)">
+              <div class="image-label">Cappaccino Caramel</div>
+              <div class="image-price">Rs.90</div>
+          </div>
+          <div>
+              <img src="irish.jpeg" alt="Coffee" onclick="addToCart('Irish', 1, 15)">
+              <div class="image-label">Cappaccino Irish</div>
+              <div class="image-price">Rs.90</div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="subcategory" id="kadakTeaSubcategory">
+  <div class="image-container">
+      <div class="image-row">
+          <div>
+              <img src="masala.jpeg" alt="Tea" onclick="addToCart('Masala Tea', 1, 20)">
+              <div class="image-label">Masala Tea</div>
+              <div class="image-price">Rs.20</div>
+          </div>
+          <div>
+              <img src="assa-tea.jpg" alt="Tea" onclick="addToCart('Assam Tea', 1, 20)">
+              <div class="image-label">Assam Tea</div>
+              <div class="image-price">Rs.20</div>
+          </div>
+      </div>
+      <div class="image-row">
+          <div>
+              <img src="elai.jpg" alt="Mocktail" onclick="addToCart('Elaichi Tea', 1, 20)">
+              <div class="image-label">Elaichi Tea</div>
+              <div class="image-price">Rs.20</div>
+          </div>
+          <div>
+              <img src="gin.PNG" alt="Mocktail" onclick="addToCart('Ginger Tea', 1, 20)">
+              <div class="image-label">Ginger Tea</div>
+              <div class="image-price">Rs.20</div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="subcategory" id="greenTeaSubcategory">
+  <div class="image-container">
+      <div class="image-row">
+          <div>
+              <img src="lemon & honey.jpg" alt="Mocktail" onclick="addToCart('lemonHoney', 1, 20)">
+              <div class="image-label">Green Tea (lemon & Honey)</div>
+              <div class="image-price">Rs.20</div>
+          </div>
+          <div>
+              <img src="paan.jpg" alt="Coffee" onclick="addToCart('Paan Tea', 1, 15)">
+              <div class="image-label">Paan Tea</div>
+              <div class="image-price">Rs.15</div>
+          </div>
+          <div>
+              <img src="lime.PNG" alt="Mocktail" onclick="addToCart('Lime Tea', 1, 20)">
+              <div class="image-label">Lime Tea</div>
+              <div class="image-price">Rs.20</div>
+          </div>
+      </div>
+      <div class="image-row">
+          <div>
+              <img src="tulsiii.PNG" alt="Tea" onclick="addToCart('Tulsi Tea', 1, 20)">
+              <div class="image-label">Tulsi Tea</div>
+              <div class="image-price">Rs.20</div>
+          </div>
+          <div>
+              <img src="ging & turm (tulsi).jpeg" alt="Coffee" onclick="addToCart('GingerTurmeric', 1, 20)">
+              <div class="image-label">Tulsi Tea (Ginger & Turmeric)</div>
+              <div class="image-price">Rs.20</div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="subcategory" id="allmenusubcategory">
+  <div class="image-container">
+    <div class="image-row">
+      <!-- First row of images -->
+      <div>
+        <!-- Image 1 -->
+        <img src="caramel.jpeg" alt="Image 1" onclick="addToCart('caramel', 1, 50)">
+        <div class="image-label">caramel</div>
+        <div class="image-price">Rs.50</div>
+      </div>
+      <div>
+        <!-- Image 2 -->
+        <img src="americano.jpeg" alt="Image 2" onclick="addToCart('americano', 1, 40)">
+        <div class="image-label">americano</div>
+        <div class="image-price">Rs.40</div>
+      </div>
+      <div>
+        <!-- Image 3 -->
+        <img src="paan.jpg" alt="Image 3" onclick="addToCart('paan', 1, 20)">
+        <div class="image-label">paan</div>
+        <div class="image-price">Rs.20</div>
+      </div>
+      <div>
+        <!-- Image 4 -->
+        <img src="hazelnut.jpeg" alt="Image 4" onclick="addToCart('hazelnut', 1, 40)">
+        <div class="image-label">hazelnut</div>
+        <div class="image-price">Rs.40</div>
+      </div>
+    </div>
+    <div class="image-row">
+      <!-- Second row of images -->
+      <div>
+        <!-- Image 5 -->
+        <img src="lemon & honey.jpg" alt="Image 5" onclick="addToCart('lemonhoney', 1, 10)">
+        <div class="image-label">lemon & honey</div>
+        <div class="image-price">Rs.20</div>
+      </div>
+      <div>
+        <!-- Image 6 -->
+        <img src="irish.jpeg" alt="Image 6" onclick="addToCart('irish', 1, 10)">
+        <div class="image-label">irish</div>
+        <div class="image-price">Rs.90</div>
+      </div>
+      <div>
+        <!-- Image 7 -->
+        <img src="Ginger-Tea.jpeg" alt="Image 7" onclick="addToCart('Ginger-Tea', 1, 10)">
+        <div class="image-label">Ginger-Tea</div>
+        <div class="image-price">Rs.90</div>
+      </div>
+      <div>
+        <!-- Image 8 -->
+        <img src="tulsi.jpeg" alt="Image 8" onclick="addToCart('tulsi', 1, 10)">
+        <div class="image-label">tulsi</div>
+        <div class="image-price">Rs.90</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleSubcategory(subcategoryID) {
+    // Hide all subcategories
+    var subcategories = document.querySelectorAll('.subcategory');
+    subcategories.forEach(function(subcategory) {
+        if (subcategory.id !== subcategoryID) {
+            subcategory.classList.remove('show');
+        }
+    });
+
+    // Toggle the visibility of the clicked subcategory
+    var subcategory = document.getElementById(subcategoryID);
+    if (subcategory.classList.contains('show')) {
+        subcategory.classList.remove('show');
+    } else {
+        subcategory.classList.add('show');
+    }
+}
+
+  // Function to add an item to the cart
+function addToCart(itemName, quantity, price) {
+    var cart = document.getElementById('cart');
+    var existingCartItem = null;
+
+    // Check if the item already exists in the cart
+    var cartItems = document.querySelectorAll('.cart-item');
+    cartItems.forEach(function(cartItem) {
+        if (cartItem.children[0].innerText === itemName) {
+            existingCartItem = cartItem;
+        }
+    });
+
+    if (existingCartItem !== null) {
+        // If the item already exists, update its quantity
+        var currentQuantity = parseInt(existingCartItem.children[1].innerText);
+        existingCartItem.children[1].innerText = currentQuantity + 1;
+    } else {
+        // If the item doesn't exist, add it to the cart
+        var cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.innerHTML = `
+            <div>${itemName}</div>
+            <div>${quantity}</div>
+            <div>${price}</div>
+            <button class="quantity-btn" onclick="decreaseQuantity(this)">-</button>
+            <button class="quantity-btn" onclick="increaseQuantity(this)">+</button>
+        `;
+        cart.appendChild(cartItem);
+    }
+
+    updateTotal();
+    saveCart(); // Save cart to localStorage
+}
+
+// Function to decrease quantity of an item in the cart
+function decreaseQuantity(button) {
+    var cartItem = button.parentElement;
+    var quantityElement = cartItem.children[1];
+    var quantity = parseInt(quantityElement.innerText);
+    if (quantity > 1) {
+        quantityElement.innerText = quantity - 1;
+    } else {
+        cartItem.remove(); // Remove the item from the cart if quantity is 1
+    }
+    updateTotal();
+    saveCart(); // Save cart to localStorage
+}
+
+// Function to increase quantity of an item in the cart
+function increaseQuantity(button) {
+    var cartItem = button.parentElement;
+    var quantityElement = cartItem.children[1];
+    var quantity = parseInt(quantityElement.innerText);
+    quantityElement.innerText = quantity + 1;
+    updateTotal();
+    saveCart(); // Save cart to localStorage
+}
+
+
+    // Function to remove an item from the cart
+    function removeFromCart(button) {
+        var cartItem = button.parentElement;
+        var price = parseInt(cartItem.children[2].innerText);
+        cartItem.remove();
+        updateTotal();
+        saveCart(); // Save cart to localStorage
+    }
+
+    // Function to update the total and GST
+function updateTotal() {
+    var cartItems = document.querySelectorAll('.cart-item');
+    var totalPrice = 0;
+
+    cartItems.forEach(function(cartItem) {
+        var price = parseFloat(cartItem.children[2].innerText);
+        var quantity = parseInt(cartItem.children[1].innerText);
+        totalPrice += price * quantity;
+    });
+
+    var gst = 0.18 * totalPrice;
+    var total = totalPrice + gst;
+    var gstElement = document.getElementById('gst');
+    var totalElement = document.getElementById('total');
+    gstElement.innerText = gst.toFixed(2);
+    totalElement.innerText = total.toFixed(2);
+}
+ // Function to save cart to localStorage
+ function saveCart() {
+        var cartItems = document.querySelectorAll('.cart-item');
+        var cartData = [];
+
+        cartItems.forEach(function(cartItem) {
+            var itemName = cartItem.children[0].innerText;
+            var quantity = parseInt(cartItem.children[1].innerText);
+            var price = parseInt(cartItem.children[2].innerText);
+            cartData.push({ itemName: itemName, quantity: quantity, price: price });
+        });
+
+        localStorage.setItem('cart', JSON.stringify(cartData));
+    }
+
+    // Function to load cart from localStorage
+    function loadCart() {
+        var cart = document.getElementById('cart');
+        var cartData = JSON.parse(localStorage.getItem('cart'));
+
+        if (cartData) {
+            cartData.forEach(function(item) {
+                addToCart(item.itemName, item.quantity, item.price);
+            });
+        }
+    }
+     // Initialize cart object if not exists
+     if (!localStorage.getItem('cart')) {
+            localStorage.setItem('cart', JSON.stringify({ items: [], totalAmount: 0 }));
+        }
+
+        // Function to update cart
+        function updateCart(item) {
+            let cart = JSON.parse(localStorage.getItem('cart'));
+            cart.items.push(item);
+            cart.totalAmount += item.price;
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+    
+    
+
+        window.onload = function() {
+    localStorage.removeItem('cart'); // Clear the cart data when the page loads
+    loadCart();
+};
+
+ // Function to handle payment
+ function pay(paymentMethod) {
+        if (paymentMethod === "cash") {
+            alert("Please make cash payment...");
+        } else if (paymentMethod === "qr") {
+            displayQRCode();
+        }
+    }
+
+  // Function to display QR code in a new window
+function displayQRCode() {
+    // URL of the QR code image
+    var qrCodeImageUrl = "c:/Users/NPD EMC/Downloads/Payment gateway QR Code.jpg";
+    // Open a new window
+    var qrWindow = window.open("", "_blank");
+    // Write the HTML content with the QR code image to the new window
+    qrWindow.document.write('<html><head><title>QR Code</title></head><body style="text-align:center;"><img src="' + qrCodeImageUrl + '" alt="QR Code"></body></html>');
+}
+
+  // Function to print bill and store cart data in local storage
+function printBill() {
+    // Store cart items in local storage
+    var cartItems = document.querySelectorAll('.cart-item');
+    var cartData = [];
+    cartItems.forEach(function(cartItem) {
+        var itemName = cartItem.children[0].innerText;
+        var quantity = parseInt(cartItem.children[1].innerText);
+        var price = parseInt(cartItem.children[2].innerText);
+        cartData.push({ itemName: itemName, quantity: quantity, price: price });
+    });
+    localStorage.setItem('cart', JSON.stringify(cartData));
+
+    // Generate the print content
+    var printWindow = window.open('', '_blank');
+    var cartContent = document.getElementById('cart').cloneNode(true); // Clone the cart content
+    // Remove the buttons from the cloned cart content
+    var buttons = cartContent.querySelectorAll('button');
+    buttons.forEach(function(button) {
+        button.remove();
+    });
+
+    // Generate the print content with cart items, quantities, and prices in columns
+    var printContent = `
+        <html>
+        <head>
+            <title>Bill</title>
+            <style>
+                .cart-item {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 5px 0;
+                }
+                .cart-item > * {
+                    flex: 1;
+                    text-align: center;
+                }
+            </style>
+        </head>
+        <body>
+            <h2>Bill</h2>
+            <table>
+                <thead>
+                    
+                </thead>
+                <tbody>
+                    ${Array.from(cartContent.children)
+                        .map(cartItem => `
+                            <tr class="cart-item">
+                                <td>${cartItem.children[0].innerText}</td>
+                                <td>${cartItem.children[1].innerText}</td>
+                                <td>${cartItem.children[2].innerText}</td>
+                            </tr>
+                        `)
+                        .join('')}
+                </tbody>
+            </table>
+            <div>
+                <p>GST: <span id="gst">${document.getElementById('gst').innerText}</span></p>
+                <p>Total: <span id="total">${document.getElementById('total').innerText}</span></p>
+            </div>
+        </body>
+        </html>
+    `;
+    // Write the print content to the print window and print it
+    printWindow.document.write(printContent);
+    printWindow.document.close();
+    printWindow.print();
+    printWindow.close();
+}
+    // Function to navigate to home page
+    function goToHomePage() {
+        window.location.href = "index.html"; // Change "index.html" to your home page URL
+    }
+
+
+
+      
+    function goToHomePage() {
+        window.location.href = "cappacuino.html"; // Change "dashboard.html" to your dashboard page URL
+    }
+    
+
+    // Call loadCart function when the page loads
+    window.onload = function() {
+        loadCart();
+    };
+    // Function to navigate to the next page
+function goToNextPage() {
+    window.location.href = "all-menu3.html"; // Replace "next_page.html" with the URL of your next page
+}
+
+function shareReceipt() {
+    var phoneNumber = prompt("Enter recipient's phone number (including country code)");
+
+    if (phoneNumber) {
+        phoneNumber = phoneNumber.replace(/\D/g, ''); // Remove non-numeric characters
+        var cartItems = document.querySelectorAll('.cart-item');
+        var totalPrice = parseFloat(document.getElementById('total').innerText);
+        var gst = parseFloat(document.getElementById('gst').innerText);
+        var message = "Cart Contents:\n";
+        
+        cartItems.forEach(function(cartItem) {
+            var itemName = cartItem.children[0].innerText;
+            var price = parseFloat(cartItem.children[2].innerText);
+            message += itemName + " Rs." + price.toFixed(2) + "\n";
+        });
+
+        message += "\nTotal Price: Rs." + totalPrice.toFixed(2) + "\n";
+        message += "GST: Rs." + gst.toFixed(2) + "\n";
+        message += "Total Amount: Rs." + (totalPrice + gst).toFixed(2) + "\n";
+        message += "\nThank you for considering emoticup as your Chai/Coffee partner!!";
+
+        var encodedMessage = encodeURIComponent(message);
+        // Open WhatsApp with the provided phone number and message
+        window.open("https://wa.me/" + phoneNumber + "?text=" + encodedMessage);
+    } else {
+        alert("Please enter a valid phone number.");
+    }
+}
+
+// Function to display QR code in a new window
+function displayQRCode() {
+    // Create a new window
+    var qrWindow = window.open("", "QR Code", "width=300,height=300");
+
+    // Construct the HTML content for the QR code
+    var qrCodeHTML = `
+        <html>
+        <head>
+            <title>QR Code</title>
+        </head>
+        <body style="text-align: center;">
+            <h2>Scan QR Code to Pay</h2>
+            <img src="c:/Users/NPD EMC/Downloads/Payment gateway QR Code.jpg" alt="QR Code">
+        </body>
+        </html>
+    `;
+
+    // Write the HTML content to the new window
+    qrWindow.document.open();
+    qrWindow.document.write(qrCodeHTML);
+    qrWindow.document.close();
+}
+
+
+
+
+</script>
+ <!-- Print and Next Page buttons -->
+ <div class="button-container">
+  <div class="print-button">
+      <button class="btn" onclick="printBill()">Print Bill</button>
+  </div>
+  <div class="next-page-button">
+      <button class="btn" onclick="goToNextPage()">Back</button>
+  </div>
+  
+</div>
+<!-- Share Receipt button -->
+<div class="share-receipt-button">
+  <button class="btn" onclick="shareReceipt()">Share Receipt</button>
+</div>
+
+</body>
+</html>
+

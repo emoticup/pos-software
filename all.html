@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tea Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            background-image: url('https://i.pinimg.com/originals/4c/2b/43/4c2b430f5adbb828811e2f151d057c14.jpg'); /* Background image */
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .content {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .image-container {
+            margin: 20px;
+        }
+
+        .image-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-left: 100px; /* Adjust this value as needed */
+}
+
+        .image-row img {
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .image-row img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Labels for images */
+        .image-label {
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .sidebar {
+    background-color: #f2f2f2;
+    padding: 20px;
+    width: 300px;
+    margin-left: auto; /* Adjust margin-left to auto to push it to the right */
+    border-radius: 10px;
+    align-self: flex-start; /* Aligning cart to the top */
+}
+
+
+        /* Cart styles */
+        .cart {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 50px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .cart-total {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .pay-section {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            padding: 40px 20px;
+            background-color:crimson;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #555;
+        }
+
+        /* Delete button style */
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #ff6659;
+        }
+
+        /* QR code styles */
+        .qr-code {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .qr-code img {
+            width: 200px; /* Adjust the width as needed */
+        }
+       /* Move the print button styling to the top */
+/* Positioning the buttons */
+
+.home-button {
+    position: fixed;
+    bottom: 20px;
+    width: calc(50% - 10px); /* Adjust this width as needed */
+    text-align: center;
+}
+
+
+
+.home-button {
+    left: 20px;
+}
+/* Button styles */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+
+/* Home button style */
+.home-button button {
+    background-color: crimson;
+    color: #fff;
+}
+
+/* Hover effect */
+.btn:hover {
+    opacity: 0.8;
+}
+  /* Circular image container */
+  .circular-images {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Circular image styles */
+        .circular-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        #menu {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: flex-start; /* Align items to the left */
+  margin-bottom: -5px;
+}
+
+.menu-item {
+  margin-bottom: 1px; /* Decrease the bottom margin */
+}
+
+.menu-item img {
+  width:70px;
+  height: 70px;
+  cursor: pointer;
+  border-radius: 50%; /* Make the images circular */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  margin-top: 35px;
+  margin-bottom: 5px;
+}
+
+.menu-item img:hover {
+  transform: scale(1.1);
+}
+
+/* Remove margin adjustments for menu items */
+.menu-item {
+  margin-right: 0; /* Remove right margin */
+  margin-left: 0; /* Remove left margin */
+}
+
+.image-price {
+            text-align: center;
+            font-weight: bold;
+}
+/* Button container */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+
+
+/* Next Page button styles */
+.next-page-button {
+    flex: 1;
+    margin-left: 5px;
+    margin-top: 580px;
+
+    
+}
+ /* Header styles */
+ header {
+            background-color: #ffffff; /* White background */
+            padding: 10px 20px; /* Padding around the logo */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for the header */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Logo styles */
+        .logo {
+            width: 200px; /* Adjust the width of the logo */
+            height: auto; /* Maintain aspect ratio */
+        }
+        .home-button{
+             margin-left: 830px;
+        }
+        /* Share Receipt button styles */
+.share-receipt-button {
+    margin-top: 20px; /* Adjust margin as needed */
+}
+
+.share-receipt-button button {
+    padding: 10px 20px;
+    background-color: #007bff; /* Blue color */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-right: 1150px;
+    position: fixed;
+    bottom: 10px;
+    /* Adjust this width as needed */
+    text-align: center;
+    width: 130px;
+    
+}
+
+
+.share-receipt-button button:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+}
+/* Positioning the button */
+.share-receipt-button {
+    position: fixed;
+    bottom: 60px;
+    left: 85%; /* Position the button at the center horizontally */
+    transform: translateX(-50%); /* Adjust to center horizontally */
+}
+.print-button {
+    position: fixed;
+    bottom: 70px;
+    left: 20px; /* Adjusted position to bottom-left corner */
+}
+
+
+.print-button button {
+    padding: 10px 20px;
+    background-color: crimson;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 9999; /* Ensure the button is above other elements */
+}
+.cart {
+    display: flex;
+    flex-direction: column; /* Display items vertically */
+    align-items: stretch; /* Ensure items stretch to fill the container */
+}
+
+.cart-item {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    justify-content: space-between; /* Evenly distribute items */
+    padding: 10px; /* Add padding for spacing */
+    border-bottom: 1px solid #ddd; /* Add border between items for separation */
+}
+
+/* Adjust styles for quantity buttons */
+.quantity-btn {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.quantity-btn:hover {
+    background-color: #0056b3;
+}
+/* Button styles */
+.show-total-button {
+    padding: 10px 20px;
+    background-color: #007bff; /* Blue color */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    position: fixed;
+    left: 20px; /* Adjust the left position as needed */
+    bottom: 20px; /* Adjust the bottom position as needed */
+    z-index: 9999; /* Ensure the button is above other elements */
+}
+
+.show-total-button:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+}
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="image-container">
+        <div class="image-row">
+            <div>
+                <img src="tulsi.jpeg" alt="Mocktail" onclick="addToCart('Tulsi Tea', 1, 20)">
+                <div class="image-label">Tulsi Tea</div>
+                <div class="image-price">Rs.20</div>
+            </div>
+            <div>
+                <img src="paan.jpg" alt="Mocktail" onclick="addToCart('paan tea', 1, 20)">
+                <div class="image-label">Paan Tea</div>
+                <div class="image-price">Rs.20</div>
+            </div>
+            <div>
+                <img src="masala.jpeg" alt="Mocktail" onclick="addToCart('Masala Tea', 1, 20)">
+                <div class="image-label">Masala Tea</div>
+                <div class="image-price">Rs.25</div>
+            </div>
+            <div>
+                <img src="lime.webp" alt="Mocktail" onclick="addToCart('Lime Tea', 1, 20)">
+                <div class="image-label">Lime Tea</div>
+                <div class="image-price">Rs.20</div>
+            </div>
+        </div>
+        <div class="image-row">
+            <div>
+                <img src="lemon & honey.jpg" alt="Mocktail" onclick="addToCart('Lemon-Honey', 1, 20)">
+                <div class="image-label">lemon-honey</div>
+                <div class="image-price">Rs.20</div>
+            </div>
+            <div>
+                <img src="latte.jpeg" alt="Mocktail" onclick="addToCart('Latte', 1, 40)">
+                <div class="image-label">Latte</div>
+                <div class="image-price">Rs.40</div>
+            </div>
+            <div>
+                <img src="ilaichi tea.webp" alt="Mocktail" onclick="addToCart('Elaichi Tea', 1, 20)">
+                <div class="image-label">Elaichi Tea</div>
+                <div class="image-price">Rs.20</div>
+            </div>
+            <div>
+                <img src="hazelnut.jpeg" alt="Mocktail" onclick="addToCart('HazelNut', 1, 40)">
+                <div class="image-label">Cappaccino HazelNut</div>
+                <div class="image-price">Rs.40</div>
+            </div>
+        </div>
+        <div class="image-row">
+            <div>
+                <img src="green tea.jpeg" alt="Tea" onclick="addToCart('Green Tea', 1, 20)">
+                <div class="image-label">Green Tea</div>
+                <div class="image-price">Rs.20</div>
+            </div>
+            <div>
+                <img src="espresso.jpg" alt="Tea" onclick="addToCart('espresso', 1, 40)">
+                <div class="image-label">Espresso</div>
+                <div class="image-price">Rs.40</div>
+            </div>
+            <div>
+                <img src="assam.jpeg" alt="Tea" onclick="addToCart('assam tea', 1, 20)">
+                <div class="image-label">Assam Tea</div>
+                <div class="image-price">Rs.20</div>
+            </div>
+            <div>
+                <img src="americano.jpeg" alt="Coffee" onclick="addToCart('americano', 1, 40)">
+                <div class="image-label">Americano</div>
+                <div class="image-price">Rs.40</div>
+            </div>
+            
+        </div>
+    </div>
+   
+
+
+    <!-- Sidebar for the cart -->
+    <div class="sidebar">
+        <h2>Cart</h2>
+        <div class="cart" id="cart">
+            <!-- Cart items will be added dynamically here -->
+        </div>
+        <div class="cart-total">
+            <p>GST: <span id="gst">0 Rs.</span></p>
+            <p>Total RS.: <span id="total">0 Rs.</span></p>
+        </div>
+        
+        <div class="pay-section">
+            <button class="btn" onclick="pay('cash')">Pay Cash</button>
+            <button class="btn" onclick="pay('qr')">Pay QR Scan</button>
+        </div>
+        
+    </div>
+    <!-- Share Receipt button -->
+<div class="share-receipt-button">
+    <button class="btn" onclick="shareReceipt()">Share Receipt</button>
+  </div>
+     <!-- Print Bill button -->
+     <div class="print-button">
+        <button class="btn" onclick="printBill()">Print Bill</button>
+    </div>
+   <!-- Button to show cart items, total cost, and GST -->
+<button class="btn show-total-button" onclick="showTotal()">Show Total</button>
+
+      <script>
+     // Function to add an item to the cart
+function addToCart(itemName, quantity, price) {
+    var cart = document.getElementById('cart');
+    var existingCartItem = null;
+
+    // Check if the item already exists in the cart
+    var cartItems = document.querySelectorAll('.cart-item');
+    cartItems.forEach(function(cartItem) {
+        if (cartItem.children[0].innerText === itemName) {
+            existingCartItem = cartItem;
+        }
+    });
+
+    if (existingCartItem !== null) {
+        // If the item already exists, update its quantity
+        var currentQuantity = parseInt(existingCartItem.children[1].innerText);
+        existingCartItem.children[1].innerText = currentQuantity + 1;
+    } else {
+        // If the item doesn't exist, add it to the cart
+        var cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.innerHTML = `
+            <div>${itemName}</div>
+            <div>${quantity}</div>
+            <div>${price}</div>
+            <button class="quantity-btn" onclick="decreaseQuantity(this)">-</button>
+            <button class="quantity-btn" onclick="increaseQuantity(this)">+</button>
+        `;
+        cart.appendChild(cartItem);
+    }
+
+    updateTotal();
+    saveCart(); // Save cart to localStorage
+}
+
+// Function to decrease quantity of an item in the cart
+function decreaseQuantity(button) {
+    var cartItem = button.parentElement;
+    var quantityElement = cartItem.children[1];
+    var quantity = parseInt(quantityElement.innerText);
+    if (quantity > 1) {
+        quantityElement.innerText = quantity - 1;
+    } else {
+        cartItem.remove(); // Remove the item from the cart if quantity is 1
+    }
+    updateTotal();
+    saveCart(); // Save cart to localStorage
+}
+
+// Function to increase quantity of an item in the cart
+function increaseQuantity(button) {
+    var cartItem = button.parentElement;
+    var quantityElement = cartItem.children[1];
+    var quantity = parseInt(quantityElement.innerText);
+    quantityElement.innerText = quantity + 1;
+    updateTotal();
+    saveCart(); // Save cart to localStorage
+}
+
+
+    // Function to remove an item from the cart
+    function removeFromCart(button) {
+        var cartItem = button.parentElement;
+        var price = parseInt(cartItem.children[2].innerText);
+        cartItem.remove();
+        updateTotal();
+        saveCart(); // Save cart to localStorage
+    }
+
+    // Function to update the total and GST
+function updateTotal() {
+    var cartItems = document.querySelectorAll('.cart-item');
+    var totalPrice = 0;
+
+    cartItems.forEach(function(cartItem) {
+        var price = parseFloat(cartItem.children[2].innerText);
+        var quantity = parseInt(cartItem.children[1].innerText);
+        totalPrice += price * quantity;
+    });
+
+    var gst = 0.18 * totalPrice;
+    var total = totalPrice + gst;
+    var gstElement = document.getElementById('gst');
+    var totalElement = document.getElementById('total');
+    gstElement.innerText = gst.toFixed(2);
+    totalElement.innerText = total.toFixed(2);
+}
+
+    // Function to handle payment
+    function pay(paymentMethod) {
+        if (paymentMethod === "cash") {
+            alert("Please make cash payment...");
+        } else if (paymentMethod === "qr") {
+            displayQRCode();
+        }
+    }
+
+  // Function to display QR code in a new window
+function displayQRCode() {
+    // URL of the QR code image
+    var qrCodeImageUrl = "c:/Users/NPD EMC/Downloads/Payment gateway QR Code.jpg";
+    // Open a new window
+    var qrWindow = window.open("", "_blank");
+    // Write the HTML content with the QR code image to the new window
+    qrWindow.document.write('<html><head><title>QR Code</title></head><body style="text-align:center;"><img src="' + qrCodeImageUrl + '" alt="QR Code"></body></html>');
+}
+
+ 
+    
+
+    // Function to save cart to localStorage
+    function saveCart() {
+        var cartItems = document.querySelectorAll('.cart-item');
+        var cartData = [];
+
+        cartItems.forEach(function(cartItem) {
+            var itemName = cartItem.children[0].innerText;
+            var quantity = parseInt(cartItem.children[1].innerText);
+            var price = parseInt(cartItem.children[2].innerText);
+            cartData.push({ itemName: itemName, quantity: quantity, price: price });
+        });
+
+        localStorage.setItem('cart', JSON.stringify(cartData));
+    }
+
+    // Function to load cart from localStorage
+    function loadCart() {
+        var cart = document.getElementById('cart');
+        var cartData = JSON.parse(localStorage.getItem('cart'));
+
+        if (cartData) {
+            cartData.forEach(function(item) {
+                addToCart(item.itemName, item.quantity, item.price);
+            });
+        }
+    }
+     // Initialize cart object if not exists
+     if (!localStorage.getItem('cart')) {
+            localStorage.setItem('cart', JSON.stringify({ items: [], totalAmount: 0 }));
+        }
+
+        // Function to update cart
+        function updateCart(item) {
+            let cart = JSON.parse(localStorage.getItem('cart'));
+            cart.items.push(item);
+            cart.totalAmount += item.price;
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+    
+    
+
+        window.onload = function() {
+    localStorage.removeItem('cart'); // Clear the cart data when the page loads
+    loadCart();
+};
+
+   // Function to navigate to the next page
+   function goToNextPage() {
+        window.location.href = "submenu.html"; // Replace "index.html" with the URL of your next page
+    }
+    function shareReceipt() {
+    var shareMethod = prompt("Share via WhatsApp or text message? (Enter 'whatsapp' or 'text')");
+
+    if (shareMethod) {
+        if (shareMethod.toLowerCase() === 'whatsapp') {
+            var useSavedContact = confirm("Would you like to use a saved contact?");
+            if (useSavedContact) {
+                var contactName = prompt("Enter the name of the saved contact:");
+                if (contactName) {
+                    // Construct the message with cart contents, GST, and total cost
+                    var cartItems = document.querySelectorAll('.cart-item');
+                    var totalPrice = parseFloat(document.getElementById('total').innerText);
+                    var gst = parseFloat(document.getElementById('gst').innerText);
+                    var message = "Cart Contents:\n";
+                    cartItems.forEach(function(cartItem) {
+                        var itemName = cartItem.children[0].innerText;
+                        var quantity = parseInt(cartItem.children[1].innerText);
+                        var price = parseFloat(cartItem.children[2].innerText);
+                        message += itemName + " - Quantity: " + quantity + ", Price: Rs." + price.toFixed(2) + "\n";
+                    });
+                    message += "\nTotal Price: Rs." + totalPrice.toFixed(2) + "\nGST: Rs." + gst.toFixed(2) + "\n";
+                    message += "Total Amount: Rs." + (totalPrice + gst).toFixed(2) + "\n";
+                    message += "\nThank you for shopping with us!";
+                    // Open WhatsApp with the saved contact's name
+                    window.open("https://wa.me/?text=" + encodeURIComponent(message));
+                } else {
+                    alert("Please enter a valid contact name.");
+                }
+            } else {
+                // Share via WhatsApp using phone number
+                var phoneNumber = prompt("Enter recipient's phone number (including country code)");
+                if (phoneNumber) {
+                    phoneNumber = phoneNumber.replace(/\D/g, ''); // Remove non-numeric characters
+                    // Construct the message with cart contents, GST, and total cost
+                    var cartItems = document.querySelectorAll('.cart-item');
+                    var totalPrice = parseFloat(document.getElementById('total').innerText);
+                    var gst = parseFloat(document.getElementById('gst').innerText);
+                    var message = "Cart Contents:\n";
+                    cartItems.forEach(function(cartItem) {
+                        var itemName = cartItem.children[0].innerText;
+                        var quantity = parseInt(cartItem.children[1].innerText);
+                        var price = parseFloat(cartItem.children[2].innerText);
+                        message += itemName + " - Quantity: " + quantity + ", Price: Rs." + price.toFixed(2) + "\n";
+                    });
+                    message += "\nTotal Price: Rs." + totalPrice.toFixed(2) + "\nGST: Rs." + gst.toFixed(2) + "\n";
+                    message += "Total Amount: Rs." + (totalPrice + gst).toFixed(2) + "\n";
+                    message += "\nThank you for shopping with us!";
+                    // Open WhatsApp with the provided phone number
+                    window.open("https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message));
+                } else {
+                    alert("Please enter a valid phone number.");
+                }
+            }
+        } else if (shareMethod.toLowerCase() === 'text') {
+            var phoneNumber = prompt("Enter recipient's phone number (including country code)");
+
+            if (phoneNumber) {
+                var cartItems = document.querySelectorAll('.cart-item');
+                var totalPrice = parseFloat(document.getElementById('total').innerText);
+                var gst = parseFloat(document.getElementById('gst').innerText);
+                var message = "Cart Contents:\n";
+                cartItems.forEach(function(cartItem) {
+                    var itemName = cartItem.children[0].innerText;
+                    var quantity = parseInt(cartItem.children[1].innerText);
+                    var price = parseFloat(cartItem.children[2].innerText);
+                    message += itemName + " - Quantity: " + quantity + ", Price: Rs." + price.toFixed(2) + "\n";
+                });
+                message += "\nTotal Price: Rs." + totalPrice.toFixed(2) + "\nGST: Rs." + gst.toFixed(2) + "\n";
+                message += "Total Amount: Rs." + (totalPrice + gst).toFixed(2) + "\n";
+                message += "\nThank you for considering emoticup as your Chai/Coffee partner!!";
+                var encodedMessage = encodeURIComponent(message);
+                // Prompt the user to share the message manually if the number is not in WhatsApp contacts
+                window.open("sms:" + phoneNumber + "?body=" + encodedMessage);
+            } else {
+                alert("Please enter a valid phone number.");
+            }
+        } else {
+            alert("Invalid option. Please enter 'whatsapp' or 'text'.");
+        }
+    }
+}
+
+// Function to show cart items, total cost, and GST
+function showTotal() {
+    var storedCartData = JSON.parse(localStorage.getItem('cart'));
+    if (storedCartData && storedCartData.length > 0) {
+        var cartItemsText = "";
+        var totalAmount = 0;
+
+        storedCartData.forEach(function(item) {
+            cartItemsText += `${item.itemName} - Quantity: ${item.quantity}, Price: Rs.${item.price}\n`;
+            totalAmount += item.price * item.quantity;
+        });
+
+        // Calculate GST
+        var gst = 0.18 * totalAmount;
+
+        // Construct the message
+        var message = "Cart Items:\n" + cartItemsText + "\nGST: Rs." + gst.toFixed(2) + "\nTotal: Rs." + (totalAmount + gst).toFixed(2);
+
+        // Show the message
+        alert(message);
+    } else {
+        alert("Cart is empty.");
+    }
+}
+
+// Function to store cart data in local storage with the current date
+function printBill() {
+    console.log("Print Bill button clicked"); // Log a message to check if the function is being called
+    // Get current date
+    var currentDate = new Date().toISOString();
+
+    // Store cart items in local storage with current date
+    var cartItems = document.querySelectorAll('.cart-item');
+    var cartData = { date: currentDate, items: [] };
+    cartItems.forEach(function(cartItem) {
+        var itemName = cartItem.children[0].innerText;
+        var quantity = parseInt(cartItem.children[1].innerText);
+        var price = parseInt(cartItem.children[2].innerText);
+        cartData.items.push({ itemName: itemName, quantity: quantity, price: price });
+    });
+
+    // Get existing transactions from local storage
+    var storedCartData = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Add current transaction to existing transactions
+    storedCartData.push(cartData);
+
+    // Store updated transactions in local storage
+    localStorage.setItem('cart', JSON.stringify(storedCartData));
+
+    // Log the stored data to the console
+    console.log("Stored Cart Data:", storedCartData);
+
+    // Print the bill (remaining code)
+}
+
+
+
+</script>
+
+    
+
+
+<div class="button-container">
+    <div class="home-button">
+        <button class="btn" onclick="goToNextPage()">Click here to choose category menu</button>
+    </div>
+</div>
+
+
+
+
+
+</body>
+</html>
+
